@@ -13,7 +13,7 @@ const Weather = ({ latlng }) => {
     }
   }, [latlng]);
 
-  if (!weatherData || !latlng) return <div>Unable to fetch data.</div>;
+  if (!weatherData || !latlng) return <div>Unable to fetch weather data.</div>;
 
   const currentTemperature = weatherData.properties.timeseries[0].data.instant.details.air_temperature;
   const currentWindSpeed = weatherData.properties.timeseries[0].data.instant.details.wind_speed;
