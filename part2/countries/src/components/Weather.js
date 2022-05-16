@@ -5,13 +5,15 @@ const Weather = ({ latlng }) => {
   const [weatherData, setWeatherData] = useState();
 
   useEffect(() => {
-    axios
-      .get(`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${latlng[0]}&lon=${latlng[1]}`)
-      .then((response) => setWeatherData(response.data))
-      .catch((error) => console.log(error));
+    if (latlng) {
+      axios
+        .get(`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${latlng[0]}&lon=${latlng[1]}`)
+        .then((response) => setWeatherData(response.data))
+        .catch((error) => console.log(error));
+    }
   }, [latlng]);
 
-  if (!weatherData) return <div>Loading...</div>;
+  if (!weatherData || !latlng) return <div>Unable to fetch data.</div>;
 
   const currentTemperature = weatherData.properties.timeseries[0].data.instant.details.air_temperature;
   const currentWindSpeed = weatherData.properties.timeseries[0].data.instant.details.wind_speed;
