@@ -1,0 +1,15 @@
+.alert {
+  width: calc(100% - 30px);
+  margin: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  background: #efefef;
+}
+
+.success {
+  border: 2px solid green;
+}
+
+.error {
+  border: 2px solid red;
+}
