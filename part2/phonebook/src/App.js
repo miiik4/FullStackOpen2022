@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/persons')
+      .get('/api/persons')
       .then((response) => {
         setPersons(response.data);
       })
@@ -59,7 +59,7 @@ const App = () => {
         setAlert({ type: 'success', message: `${newPerson.name} has been added.` });
       })
       .catch((error) => {
-        setAlert({ type: 'error', message: `Unable to add ${newPerson.name}.` });
+        setAlert({ type: 'error', message: error.response.data.error });
       });
   };
 
